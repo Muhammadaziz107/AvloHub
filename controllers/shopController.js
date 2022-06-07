@@ -65,6 +65,15 @@ const allShops = (req, res) => {
 
 const getOneShop = (req, res) => {
   try {
+    const shopId = req.params.id;
+
+    const foundShop = shops.find(id => (id = shopId));
+
+    if (foundShop) {
+      res.send(foundShop);
+    } else {
+      res.send("Not found");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -72,7 +81,18 @@ const getOneShop = (req, res) => {
 
 const updateShop = (req, res) => {
   try {
-    //   const {old}
+    const shopId = req.params.id;
+    const foundShop = shops.find(id => (id = shopId));
+
+    const { newName } = req.body;
+
+    shops.forEach(row => {
+      const oldName = row.name;
+
+      oldName = newName;
+
+      res.send("Updated");
+    });
   } catch (err) {
     console.log(err);
   }
@@ -91,7 +111,7 @@ const deleteAllShops = (req, res) => {
 module.exports = {
   newShop,
   allShops,
-  //   getOneShop,
+  getOneShop,
   updateShop,
   deleteAllShops,
 };
