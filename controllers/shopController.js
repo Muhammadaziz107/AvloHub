@@ -86,7 +86,7 @@ const updateShop = (req, res) => {
 
     const { newName } = req.body;
 
-    shops.forEach(row => {
+    foundShop.forEach(row => {
       const oldName = row.name;
 
       oldName = newName;
